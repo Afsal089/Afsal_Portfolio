@@ -6,193 +6,116 @@
     <title>Afsal R | Presentations & Visual Design Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- AOS Scroll Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- PDF.js for automatic PDF First-Page Thumbnails -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #e9ecef;
-            color: #1e293b;
-            overflow-x: hidden;
+            background-color: #f8fafc;
         }
-
-        /* Minimal Grey Dotted Architectural Pattern */
-        .dot-grid-bg {
-            background-color: #e9ecef;
-            background-image: radial-gradient(#94a3b8 1.25px, transparent 1.25px);
-            background-size: 24px 24px;
+        .vibrant-mesh {
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.14) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.14) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
         }
-
-        /* Frosted Grey Glassmorphism */
-        .grey-glass {
-            background: rgba(241, 245, 249, 0.78);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.65);
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px);
         }
-
-        .card-surface {
-            background: rgba(248, 250, 252, 0.88);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(203, 213, 225, 0.8);
-            transition: transform 0.25s ease-out, box-shadow 0.4s ease, border-color 0.3s ease;
-            transform-style: preserve-3d;
+        .deck-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        .card-surface:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.16);
-        }
-
-        /* Glossy Light Sweep on Thumbnails */
-        .shine-box {
-            position: relative;
-            overflow: hidden;
-        }
-        .shine-box::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            transition: left 0.8s ease;
-            pointer-events: none;
-        }
-        .card-surface:hover .shine-box::after {
-            left: 160%;
-        }
-
-        /* Typewriter Cursor Blink */
-        .cursor-blink {
-            display: inline-block;
-            width: 2.5px;
-            height: 1.1em;
-            background-color: #2563eb;
-            margin-left: 3px;
-            vertical-align: middle;
-            animation: blink 0.85s infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Floating Orbit Ring around Avatar */
-        @keyframes spinSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .orbit-ring {
-            animation: spinSlow 12s linear infinite;
-        }
-
-        /* Modal Pop Animation */
-        @keyframes modalPop {
-            0% { opacity: 0; transform: scale(0.92) translateY(20px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .modal-animate {
-            animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .deck-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.22);
         }
     </style>
 </head>
-<body class="dot-grid-bg antialiased selection:bg-slate-900 selection:text-white relative">
+<body class="text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
 
-    <!-- Interactive Animated Dots Canvas (Full Page Background) -->
-    <canvas id="particle-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
-
-    <!-- Scroll Progress Indicator -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-slate-800 via-blue-600 to-indigo-600 z-50 transition-all duration-150" style="width: 0%;"></div>
+    <!-- Top Vibrant Gradient Bar -->
+    <div class="h-1.5 w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 fixed top-0 z-50"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-1 w-full z-40 grey-glass shadow-sm">
+    <nav class="fixed top-1.5 w-full z-40 glass-header border-b border-slate-200/80">
         <div class="max-w-6xl mx-auto px-6 py-3.5 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2.5 group">
-                <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center font-extrabold text-lg shadow-md group-hover:bg-blue-600 group-hover:rotate-12 transition-all duration-300">
+            <a href="#" class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-blue-600/25">
                     A
                 </div>
                 <span class="text-lg font-extrabold tracking-tight text-slate-900">AFSAL <span class="text-blue-600">R.</span></span>
             </a>
 
             <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
-                <a href="#portfolio" class="hover:text-slate-950 transition relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Work Showcase</a>
-                <a href="#experience" class="hover:text-slate-950 transition relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Experience</a>
-                <a href="#skills" class="hover:text-slate-950 transition relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Capabilities</a>
-                <a href="#contact" class="hover:text-slate-950 transition relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Contact</a>
+                <a href="#portfolio" class="hover:text-blue-600 transition">Showcase Decks</a>
+                <a href="#experience" class="hover:text-blue-600 transition">Experience</a>
+                <a href="#skills" class="hover:text-blue-600 transition">Expertise</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
             </div>
 
             <div class="flex items-center gap-3">
-                <a href="Afsal_R_CV.pdf" download class="bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md flex items-center">
+                <a href="Afsal_R_CV.pdf" download class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-blue-600/20 flex items-center">
                     <i class="fas fa-download mr-1.5"></i> Resume PDF
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Minimal Grey Hero Section -->
-    <section class="relative z-10 pt-28 pb-14 px-6">
-        <div class="max-w-6xl mx-auto" data-aos="zoom-out-up" data-aos-duration="800">
-            <div class="grey-glass rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-900/5 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+    <!-- Compact Hero Section with Smaller Photo -->
+    <section class="pt-28 pb-14 px-6 vibrant-mesh border-b border-slate-200/70">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white/90 backdrop-blur-md border border-slate-200/90 rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 flex flex-col md:flex-row items-center gap-8">
                 
-                <!-- Subtle Corner Accent -->
-                <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                <!-- Compact Profile Photo with Rotating Dashed Orbit Ring -->
-                <div class="relative shrink-0 group p-2">
-                    <div class="orbit-ring absolute inset-0 rounded-full border-2 border-dashed border-blue-500/50"></div>
-                    <div class="relative w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-slate-200 shadow-lg bg-slate-300">
+                <!-- Compact Profile Photo -->
+                <div class="relative shrink-0">
+                    <div class="absolute -inset-1.5 bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 rounded-full blur-sm opacity-75"></div>
+                    <div class="relative w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-white shadow-lg bg-slate-100">
                         <img src="IMG-20261009-WA0036.jpg" 
-                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Afsal+R&background=1e293b&color=fff&size=256';" 
+                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Afsal+R&background=2563eb&color=fff&size=256';" 
                              alt="Afsal R" 
-                             class="w-full h-full object-cover object-top group-hover:scale-110 transition duration-500">
+                             class="w-full h-full object-cover object-top">
                     </div>
-                    <span class="absolute bottom-3 right-3 bg-emerald-500 border-2 border-slate-100 w-4 h-4 rounded-full" title="Available for Work"></span>
+                    <span class="absolute bottom-1 right-1 bg-emerald-500 border-2 border-white w-4 h-4 rounded-full" title="Available for Work"></span>
                 </div>
 
-                <!-- Intro & Dynamic Typewriter -->
+                <!-- Intro & Highlights -->
                 <div class="flex-1 text-center md:text-left space-y-3">
-                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-slate-200/80 border border-slate-300 text-slate-700 text-xs font-bold">
-                        <span class="w-2 h-2 rounded-full bg-blue-600 mr-2 animate-pulse"></span> Executive Visual & Presentation Design
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold">
+                        <i class="fas fa-sparkles mr-1.5 text-amber-500"></i> Presentations & Visual Design Specialist
                     </div>
                     <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-                        Afsal R <span class="text-slate-400 font-normal text-xl md:text-2xl">|</span> 
-                        <span id="typewriter-text" class="text-blue-600 text-xl md:text-2xl font-bold"></span><span class="cursor-blink"></span>
+                        Afsal R <span class="text-slate-400 font-normal text-xl md:text-2xl">| Corporate Visual Designer</span>
                     </h1>
                     <p class="text-slate-600 text-sm md:text-base leading-relaxed max-w-3xl">
-                        Crafting executive-ready pitchbooks, M&A proposals, and custom Slide Master systems for investment banking and enterprise clients. <strong>3+ years of experience</strong> with <strong>100% SLA accuracy</strong> and zero escalations.
+                        Transforming complex corporate & financial data into executive-ready visual stories. <strong>3+ years of experience</strong> crafting 50+ high-stakes pitchbooks, M&A proposals, and custom Slide Master systems with <strong>100% SLA accuracy</strong>.
                     </p>
                     
                     <div class="flex flex-wrap justify-center md:justify-start gap-3 pt-2">
-                        <a href="#portfolio" class="bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold px-5 py-3 rounded-xl transition transform hover:-translate-y-0.5 shadow-md">
-                            Explore Slide Decks <i class="fas fa-arrow-down ml-1.5"></i>
+                        <a href="#portfolio" class="bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold px-5 py-3 rounded-xl transition shadow-md">
+                            Explore Presentation Decks <i class="fas fa-arrow-down ml-1.5"></i>
                         </a>
-                        <a href="Afsal_R_CV.pdf" target="_blank" class="bg-slate-200/80 hover:bg-white text-slate-800 text-xs font-bold px-5 py-3 rounded-xl border border-slate-300 transition transform hover:-translate-y-0.5">
-                            <i class="fas fa-file-pdf text-rose-600 mr-1.5"></i> View Full CV
+                        <a href="Afsal_R_CV.pdf" target="_blank" class="bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold px-5 py-3 rounded-xl border border-slate-300 transition">
+                            <i class="fas fa-file-pdf text-rose-500 mr-1.5"></i> View Full CV
                         </a>
                     </div>
                 </div>
 
-                <!-- Minimal Grey Stat Cards -->
+                <!-- Vibrant Mini Metrics -->
                 <div class="grid grid-cols-3 md:grid-cols-1 gap-3 shrink-0 w-full md:w-44">
-                    <div class="bg-slate-200/70 border border-slate-300/80 p-3 rounded-2xl text-center hover:bg-white hover:scale-105 transition-all">
-                        <div class="text-xl font-extrabold text-slate-900"><span class="counter" data-target="3">0</span>+ Yrs</div>
-                        <div class="text-[11px] font-semibold text-slate-500">Experience</div>
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 p-3 rounded-2xl text-center">
+                        <div class="text-xl font-extrabold text-blue-700">3+ Yrs</div>
+                        <div class="text-[11px] font-semibold text-slate-600">Experience</div>
                     </div>
-                    <div class="bg-slate-200/70 border border-slate-300/80 p-3 rounded-2xl text-center hover:bg-white hover:scale-105 transition-all">
-                        <div class="text-xl font-extrabold text-blue-600"><span class="counter" data-target="50">0</span>+</div>
-                        <div class="text-[11px] font-semibold text-slate-500">Pitch Decks</div>
+                    <div class="bg-gradient-to-br from-cyan-50 to-sky-50 border border-cyan-100 p-3 rounded-2xl text-center">
+                        <div class="text-xl font-extrabold text-cyan-700">50+</div>
+                        <div class="text-[11px] font-semibold text-slate-600">Pitch Decks</div>
                     </div>
-                    <div class="bg-slate-200/70 border border-slate-300/80 p-3 rounded-2xl text-center hover:bg-white hover:scale-105 transition-all">
-                        <div class="text-xl font-extrabold text-slate-900"><span class="counter" data-target="100">0</span>%</div>
-                        <div class="text-[11px] font-semibold text-slate-500">Zero Escalations</div>
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 p-3 rounded-2xl text-center">
+                        <div class="text-xl font-extrabold text-emerald-700">100%</div>
+                        <div class="text-[11px] font-semibold text-slate-600">Zero Escalations</div>
                     </div>
                 </div>
 
@@ -200,137 +123,145 @@
         </div>
     </section>
 
-    <!-- 3D INTERACTIVE VISUAL PORTFOLIO SHOWCASE -->
-    <section id="portfolio" class="relative z-10 py-14 px-6 max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6" data-aos="fade-up">
+    <!-- HIGH-ENGAGEMENT VISUAL PORTFOLIO SHOWCASE -->
+    <section id="portfolio" class="py-16 px-6 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <div>
-                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Selected Works</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-1">Presentation Decks</h2>
-                <p class="text-slate-600 text-sm mt-2">Move cursor over cards for 3D depth. Click any thumbnail to launch the full-screen viewer.</p>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-600">Visual Showcase</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-1">Featured Presentation Decks</h2>
+                <p class="text-slate-500 text-sm mt-2">Click on any slide thumbnail to launch the interactive full-screen deck viewer.</p>
             </div>
 
-            <!-- Category Filter Pills -->
+            <!-- Interactive Category Filter Pills -->
             <div class="flex flex-wrap gap-2" id="filter-buttons">
-                <button onclick="filterDecks('all', this)" class="filter-btn active bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md transition transform active:scale-95">All Decks (3)</button>
-                <button onclick="filterDecks('enterprise', this)" class="filter-btn bg-slate-200/80 text-slate-700 hover:bg-white border border-slate-300 text-xs font-bold px-4 py-2 rounded-full transition transform active:scale-95">Enterprise IT</button>
-                <button onclick="filterDecks('data', this)" class="filter-btn bg-slate-200/80 text-slate-700 hover:bg-white border border-slate-300 text-xs font-bold px-4 py-2 rounded-full transition transform active:scale-95">Data & AI</button>
-                <button onclick="filterDecks('consulting', this)" class="filter-btn bg-slate-200/80 text-slate-700 hover:bg-white border border-slate-300 text-xs font-bold px-4 py-2 rounded-full transition transform active:scale-95">Consulting</button>
+                <button onclick="filterDecks('all', this)" class="filter-btn active bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md shadow-blue-600/20 transition">All Decks (3)</button>
+                <button onclick="filterDecks('enterprise', this)" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 text-xs font-bold px-4 py-2 rounded-full transition">Enterprise IT</button>
+                <button onclick="filterDecks('data', this)" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 text-xs font-bold px-4 py-2 rounded-full transition">Data & AI</button>
+                <button onclick="filterDecks('consulting', this)" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 text-xs font-bold px-4 py-2 rounded-full transition">Consulting</button>
             </div>
         </div>
 
-        <!-- 3-Column 3D Tilt Deck Grid -->
+        <!-- 3-Column Visual Deck Grid -->
         <div class="grid md:grid-cols-3 gap-8" id="decks-grid">
             
             <!-- Deck 1: GAPBLUE -->
-            <div data-category="enterprise" data-aos="fade-up" data-aos-delay="100" class="deck-card tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
+            <div data-category="enterprise" class="deck-card bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-lg shadow-slate-200/60 flex flex-col justify-between group">
                 <div>
-                    <div onclick="openPreview('Template_01.pdf', 'GAPBLUE: Enterprise Transformation Deck (10 Slides)')" class="shine-box relative aspect-video bg-slate-300 overflow-hidden cursor-pointer border-b border-slate-200">
+                    <!-- Live PDF First-Slide Thumbnail -->
+                    <div onclick="openPreview('Template_01.pdf', 'GAPBLUE: Enterprise Transformation Deck (10 Slides)')" class="relative aspect-video bg-gradient-to-br from-sky-100 to-blue-200 overflow-hidden cursor-pointer">
                         <canvas id="thumb-1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></canvas>
-                        <div id="loader-1" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-600 bg-slate-200">
-                            <i class="fas fa-circle-notch fa-spin mr-2 text-blue-600"></i> Rendering Slide...
+                        <div id="loader-1" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-blue-700 bg-sky-50">
+                            <i class="fas fa-circle-notch fa-spin mr-2"></i> Rendering Slide...
                         </div>
                         
-                        <div class="absolute inset-0 bg-slate-900/75 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-5">
-                            <span class="text-white text-xs font-bold"><i class="fas fa-expand mr-1.5 text-blue-400"></i> Fullscreen View</span>
+                        <!-- Hover Overlay CTA -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-5">
+                            <span class="text-white text-xs font-bold"><i class="fas fa-play-circle mr-1.5 text-cyan-400"></i> Interactive Preview</span>
                             <span class="bg-white text-slate-900 text-[11px] font-extrabold px-3 py-1 rounded-full">10 Slides</span>
                         </div>
                     </div>
 
                     <div class="p-6 space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-2.5 py-1 rounded-md">Enterprise IT & Cloud</span>
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-100 px-2.5 py-1 rounded-md">Enterprise IT & Cloud</span>
                             <span class="text-xs font-bold text-slate-400">10 Slides</span>
                         </div>
                         <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-blue-600 transition">GAPBLUE Capability Deck</h3>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            Executive capability presentation featuring custom KPI donut charts, enterprise architecture diagrams, and modern corporate visual storytelling.
+                            Executive capability presentation featuring custom KPI donut charts, enterprise architecture diagrams, and modern corporate color storytelling.
                         </p>
                         <div class="flex flex-wrap gap-1.5 pt-1">
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Custom Charts</span>
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Infographics</span>
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Corporate</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Custom Charts</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Infographics</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Corporate Deck</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-6 pt-0">
-                    <button onclick="openPreview('Template_01.pdf', 'GAPBLUE: Enterprise Transformation Deck (10 Slides)')" class="w-full bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold py-3.5 rounded-xl transition transform active:scale-95 shadow-md flex items-center justify-center">
+                    <button onclick="openPreview('Template_01.pdf', 'GAPBLUE: Enterprise Transformation Deck (10 Slides)')" class="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white text-xs font-bold py-3.5 rounded-xl transition shadow-md shadow-blue-500/25 flex items-center justify-center">
                         <i class="fas fa-eye mr-2"></i> Inspect Slide Deck
                     </button>
                 </div>
             </div>
 
             <!-- Deck 2: SIGMOID -->
-            <div data-category="data" data-aos="fade-up" data-aos-delay="250" class="deck-card tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
+            <div data-category="data" class="deck-card bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-lg shadow-slate-200/60 flex flex-col justify-between group">
                 <div>
-                    <div onclick="openPreview('Template_02.pdf', 'SIGMOID: Data & AI Strategy Deck (16 Slides)')" class="shine-box relative aspect-video bg-slate-300 overflow-hidden cursor-pointer border-b border-slate-200">
+                    <!-- Live PDF First-Slide Thumbnail -->
+                    <div onclick="openPreview('Template_02.pdf', 'SIGMOID: Data & AI Strategy Deck (16 Slides)')" class="relative aspect-video bg-gradient-to-br from-rose-100 to-orange-100 overflow-hidden cursor-pointer">
                         <canvas id="thumb-2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></canvas>
-                        <div id="loader-2" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-600 bg-slate-200">
-                            <i class="fas fa-circle-notch fa-spin mr-2 text-blue-600"></i> Rendering Slide...
+                        <div id="loader-2" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-rose-700 bg-rose-50">
+                            <i class="fas fa-circle-notch fa-spin mr-2"></i> Rendering Slide...
                         </div>
 
-                        <div class="absolute inset-0 bg-slate-900/75 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-5">
-                            <span class="text-white text-xs font-bold"><i class="fas fa-expand mr-1.5 text-blue-400"></i> Fullscreen View</span>
+                        <!-- Hover Overlay CTA -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-5">
+                            <span class="text-white text-xs font-bold"><i class="fas fa-play-circle mr-1.5 text-rose-400"></i> Interactive Preview</span>
                             <span class="bg-white text-slate-900 text-[11px] font-extrabold px-3 py-1 rounded-full">16 Slides</span>
                         </div>
                     </div>
 
                     <div class="p-6 space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-700 bg-slate-200 px-2.5 py-1 rounded-md">Data Analytics & AI</span>
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-rose-700 bg-rose-100 px-2.5 py-1 rounded-md">Data Analytics & AI</span>
                             <span class="text-xs font-bold text-slate-400">16 Slides</span>
                         </div>
-                        <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-blue-600 transition">SIGMOID Strategy Pitchbook</h3>
+                        <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-rose-600 transition">SIGMOID Strategy Pitchbook</h3>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Multi-option proposal deck showcasing custom iconography, timeline roadmaps, workforce analytics charts, and visual layout variations.
                         </p>
                         <div class="flex flex-wrap gap-1.5 pt-1">
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Layout Options</span>
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Data Viz</span>
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Roadmaps</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Layout Options</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Data Viz</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Roadmaps</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-6 pt-0">
-                    <button onclick="openPreview('Template_02.pdf', 'SIGMOID: Data & AI Strategy Deck (16 Slides)')" class="w-full bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold py-3.5 rounded-xl transition transform active:scale-95 shadow-md flex items-center justify-center">
+                    <button onclick="openPreview('Template_02.pdf', 'SIGMOID: Data & AI Strategy Deck (16 Slides)')" class="w-full bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 text-white text-xs font-bold py-3.5 rounded-xl transition shadow-md shadow-rose-500/25 flex items-center justify-center">
                         <i class="fas fa-eye mr-2"></i> Inspect Slide Deck
                     </button>
                 </div>
-                <!-- Deck 3: KPMG -->
-            <div data-category="consulting" data-aos="fade-up" data-aos-delay="400" class="deck-card tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
+            </div>
+
+            <!-- Deck 3: KPMG -->
+            <div data-category="consulting" class="deck-card bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-lg shadow-slate-200/60 flex flex-col justify-between group">
                 <div>
-                    <div onclick="openPreview('Template_03.pdf', 'KPMG: Trustworthy Healthcare AI Report (7 Slides)')" class="shine-box relative aspect-video bg-slate-300 overflow-hidden cursor-pointer border-b border-slate-200">
+                    <!-- Live PDF First-Slide Thumbnail -->
+                    <div onclick="openPreview('Template_03.pdf', 'KPMG: Trustworthy Healthcare AI Report (7 Slides)')" class="relative aspect-video bg-gradient-to-br from-indigo-100 to-purple-200 overflow-hidden cursor-pointer">
                         <canvas id="thumb-3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></canvas>
-                        <div id="loader-3" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-600 bg-slate-200">
-                            <i class="fas fa-circle-notch fa-spin mr-2 text-blue-600"></i> Rendering Slide...
+                        <div id="loader-3" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-indigo-700 bg-indigo-50">
+                            <i class="fas fa-circle-notch fa-spin mr-2"></i> Rendering Slide...
                         </div>
 
-                        <div class="absolute inset-0 bg-slate-900/75 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-5">
-                            <span class="text-white text-xs font-bold"><i class="fas fa-expand mr-1.5 text-blue-400"></i> Fullscreen View</span>
+                        <!-- Hover Overlay CTA -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-5">
+                            <span class="text-white text-xs font-bold"><i class="fas fa-play-circle mr-1.5 text-indigo-400"></i> Interactive Preview</span>
                             <span class="bg-white text-slate-900 text-[11px] font-extrabold px-3 py-1 rounded-full">7 Slides</span>
                         </div>
                     </div>
 
                     <div class="p-6 space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-700 bg-indigo-100/80 px-2.5 py-1 rounded-md">Management Consulting</span>
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-md">Management Consulting</span>
                             <span class="text-xs font-bold text-slate-400">7 Slides</span>
                         </div>
-                        <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-blue-600 transition">KPMG Trusted AI Report</h3>
+                        <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-indigo-600 transition">KPMG Trusted AI Report</h3>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Executive thought leadership presentation on Healthcare AI governance, featuring structured frameworks, visual hierarchy, and strict brand compliance.
                         </p>
                         <div class="flex flex-wrap gap-1.5 pt-1">
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Brand Compliance</span>
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Frameworks</span>
-                            <span class="text-[11px] font-semibold bg-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md">Slide Master</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Brand Compliance</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Frameworks</span>
+                            <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Slide Master</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-6 pt-0">
-                    <button onclick="openPreview('Template_03.pdf', 'KPMG: Trustworthy Healthcare AI Report (7 Slides)')" class="w-full bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold py-3.5 rounded-xl transition transform active:scale-95 shadow-md flex items-center justify-center">
+                    <button onclick="openPreview('Template_03.pdf', 'KPMG: Trustworthy Healthcare AI Report (7 Slides)')" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-xs font-bold py-3.5 rounded-xl transition shadow-md shadow-indigo-500/25 flex items-center justify-center">
                         <i class="fas fa-eye mr-2"></i> Inspect Slide Deck
                     </button>
                 </div>
@@ -340,18 +271,18 @@
     </section>
 
     <!-- Experience & Skills Section -->
-    <section id="experience" class="relative z-10 py-16 px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-10">
+    <section id="experience" class="py-16 bg-white border-t border-slate-200/80 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
             
             <!-- Career Timeline -->
-            <div data-aos="fade-right" data-aos-duration="700">
+            <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Career Track</span>
-                <h2 class="text-2xl font-extrabold text-slate-900 mt-1 mb-6">Professional Experience</h2>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1 mb-8">Professional Experience</h2>
                 
-                <div class="space-y-5">
-                    <div class="grey-glass p-6 rounded-3xl relative overflow-hidden hover:border-blue-400 transition duration-300 shadow-sm">
-                        <div class="absolute top-0 left-0 w-1.5 h-full bg-blue-600"></div>
-                        <span class="text-xs font-bold text-blue-700 bg-blue-100/90 px-2.5 py-1 rounded-md">Sep 2023 – Present (3+ Years)</span>
+                <div class="space-y-6">
+                    <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-blue-600 to-indigo-600"></div>
+                        <span class="text-xs font-bold text-blue-600 bg-blue-100/80 px-2.5 py-1 rounded-md">Sep 2023 – Present (3+ Years)</span>
                         <h3 class="text-lg font-extrabold text-slate-900 mt-3">Document Production Associate – Presentations & Graphics</h3>
                         <p class="text-sm font-bold text-slate-600 mb-3">Williams Lea | Kochi, Kerala</p>
                         <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
@@ -361,9 +292,9 @@
                         </ul>
                     </div>
 
-                    <div class="grey-glass p-6 rounded-3xl relative overflow-hidden hover:border-slate-400 transition duration-300 shadow-sm">
-                        <div class="absolute top-0 left-0 w-1.5 h-full bg-slate-400"></div>
-                        <span class="text-xs font-bold text-slate-700 bg-slate-200 px-2.5 py-1 rounded-md">Feb 2022 – Feb 2023</span>
+                    <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1.5 h-full bg-slate-300"></div>
+                        <span class="text-xs font-bold text-slate-600 bg-slate-200 px-2.5 py-1 rounded-md">Feb 2022 – Feb 2023</span>
                         <h3 class="text-lg font-extrabold text-slate-900 mt-3">Crew Member</h3>
                         <p class="text-sm font-bold text-slate-600 mb-2">McDonald's | UAE</p>
                         <p class="text-sm text-slate-600">Built strong cross-cultural communication, teamwork, and fast-paced operational adaptability in an international environment.</p>
@@ -372,36 +303,36 @@
             </div>
 
             <!-- Skills & Certifications -->
-            <div id="skills" data-aos="fade-left" data-aos-duration="700">
-                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Capabilities</span>
-                <h2 class="text-2xl font-extrabold text-slate-900 mt-1 mb-6">Tools, Skills & Education</h2>
+            <div id="skills">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-600">Capabilities</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1 mb-8">Tools, Skills & Education</h2>
                 
-                <div class="grey-glass rounded-3xl p-6 space-y-6 shadow-sm">
+                <div class="bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200/90 rounded-2xl p-6 space-y-6">
                     <div>
                         <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-3">Core Presentation & Design Stack</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-slate-900 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm hover:bg-blue-600 transition">MS PowerPoint (Advanced)</span>
-                            <span class="bg-blue-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm hover:bg-slate-900 transition">Slide Master Architecture</span>
-                            <span class="bg-slate-200/90 border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-1.5 rounded-lg hover:bg-white transition">Pitchbook & M&A Decks</span>
-                            <span class="bg-slate-200/90 border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-1.5 rounded-lg hover:bg-white transition">Data Visualization</span>
-                            <span class="bg-slate-200/90 border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-1.5 rounded-lg hover:bg-white transition">MS Excel & Word (Advanced)</span>
-                            <span class="bg-slate-200/90 border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-1.5 rounded-lg hover:bg-white transition">Adobe Photoshop</span>
+                            <span class="bg-blue-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm">MS PowerPoint (Advanced)</span>
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm">Slide Master Architecture</span>
+                            <span class="bg-white border border-slate-200 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg">Pitchbook & M&A Decks</span>
+                            <span class="bg-white border border-slate-200 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg">Data Visualization</span>
+                            <span class="bg-white border border-slate-200 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg">MS Excel & Word (Advanced)</span>
+                            <span class="bg-white border border-slate-200 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg">Adobe Photoshop</span>
                         </div>
                     </div>
 
-                    <div class="border-t border-slate-300/80 pt-5">
+                    <div class="border-t border-slate-200 pt-5">
                         <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-3">Certifications</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-bold text-slate-700">
-                            <div class="bg-slate-200/70 p-3 rounded-xl border border-slate-300/80 flex items-center hover:bg-white transition">
+                            <div class="bg-white p-3 rounded-xl border border-slate-200/80 flex items-center">
                                 <i class="fas fa-award text-blue-600 text-base mr-2.5"></i> Microsoft Azure Fundamentals
                             </div>
-                            <div class="bg-slate-200/70 p-3 rounded-xl border border-slate-300/80 flex items-center hover:bg-white transition">
-                                <i class="fas fa-award text-slate-800 text-base mr-2.5"></i> CCNA – Cisco Networking
+                            <div class="bg-white p-3 rounded-xl border border-slate-200/80 flex items-center">
+                                <i class="fas fa-award text-indigo-600 text-base mr-2.5"></i> CCNA – Cisco Networking
                             </div>
                         </div>
                     </div>
 
-                    <div class="border-t border-slate-300/80 pt-5">
+                    <div class="border-t border-slate-200 pt-5">
                         <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Education</h4>
                         <p class="text-sm font-extrabold text-slate-900">BSc Geography – Bharathiar University (2016 – 2019)</p>
                         <p class="text-xs font-semibold text-slate-500 mt-1">Cloud Engineer Training – Cmsiclass Training Institute (2022 – 2023)</p>
@@ -412,25 +343,25 @@
         </div>
     </section>
 
-    <!-- Minimal Dark Slate Contact Footer -->
-    <footer id="contact" class="relative z-10 bg-slate-900 text-slate-200 py-16 px-6 mt-8">
-        <div class="max-w-4xl mx-auto text-center space-y-6" data-aos="zoom-in">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Let's Build Executive Visuals</h2>
-            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+    <!-- Vibrant Contact CTA Footer -->
+    <footer id="contact" class="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white py-16 px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            <h2 class="text-3xl md:text-4xl font-extrabold">Ready to Elevate Your Presentations?</h2>
+            <p class="text-blue-100 text-sm md:text-base max-w-xl mx-auto">
                 Available for Corporate Presentation Specialist, Visual Designer, and Document Production roles.
             </p>
             <div class="flex flex-wrap justify-center gap-4 pt-2">
-                <a href="mailto:afsalakku089@gmail.com" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3.5 rounded-xl text-xs font-extrabold transition transform hover:-translate-y-1 shadow-lg">
-                    <i class="fas fa-envelope mr-2"></i> afsalakku089@gmail.com
+                <a href="mailto:afsalakku089@gmail.com" class="bg-white text-slate-900 hover:bg-blue-50 px-6 py-3.5 rounded-xl text-xs font-extrabold transition shadow-lg">
+                    <i class="fas fa-envelope text-blue-600 mr-2"></i> afsalakku089@gmail.com
                 </a>
-                <a href="tel:+917010718064" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 px-6 py-3.5 rounded-xl text-xs font-extrabold text-white transition transform hover:-translate-y-1">
-                    <i class="fas fa-phone text-emerald-400 mr-2"></i> +91 70107 18064
+                <a href="tel:+917010718064" class="bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 px-6 py-3.5 rounded-xl text-xs font-extrabold text-white transition">
+                    <i class="fas fa-phone text-emerald-300 mr-2"></i> +91 70107 18064
                 </a>
-                <a href="https://linkedin.com/in/afsalr" target="_blank" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 px-6 py-3.5 rounded-xl text-xs font-extrabold text-white transition transform hover:-translate-y-1">
-                    <i class="fab fa-linkedin text-sky-400 mr-2"></i> linkedin.com/in/afsalr
+                <a href="https://linkedin.com/in/afsalr" target="_blank" class="bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 px-6 py-3.5 rounded-xl text-xs font-extrabold text-white transition">
+                    <i class="fab fa-linkedin text-cyan-300 mr-2"></i> linkedin.com/in/afsalr
                 </a>
             </div>
-            <p class="text-xs text-slate-500 pt-8">
+            <p class="text-xs text-blue-200/80 pt-8">
                 Palakkad / Kochi, Kerala, India • © 2026 Afsal R.
             </p>
         </div>
@@ -438,191 +369,22 @@
 
     <!-- Interactive Fullscreen Slide Viewer Modal -->
     <div id="pdfModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="modal-animate bg-slate-100 border border-slate-300 rounded-3xl w-full max-w-5xl h-[88vh] flex flex-col overflow-hidden shadow-2xl">
-            <div class="flex justify-between items-center px-6 py-4 border-b border-slate-300 bg-slate-200">
+        <div class="bg-white border border-slate-200 rounded-3xl w-full max-w-5xl h-[88vh] flex flex-col overflow-hidden shadow-2xl">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-slate-200 bg-slate-50">
                 <div class="flex items-center gap-2.5">
                     <span class="w-3 h-3 rounded-full bg-rose-500"></span>
                     <span class="w-3 h-3 rounded-full bg-amber-400"></span>
                     <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
                     <h3 id="modalTitle" class="font-extrabold text-slate-900 text-sm md:text-base ml-2">Presentation Preview</h3>
                 </div>
-                <button onclick="closePreview()" class="bg-slate-300 hover:bg-rose-600 hover:text-white text-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold transition">&times;</button>
+                <button onclick="closePreview()" class="bg-slate-200 hover:bg-rose-600 hover:text-white text-slate-700 w-8 h-8 rounded-full flex items-center justify-center font-bold transition">&times;</button>
             </div>
-            <iframe id="pdfFrame" src="" class="w-full flex-1 bg-slate-200"></iframe>
+            <iframe id="pdfFrame" src="" class="w-full flex-1 bg-slate-100"></iframe>
         </div>
     </div>
 
     <script>
-        // 1. Initialize Scroll Animations (AOS)
-        AOS.init({
-            once: true,
-            offset: 50,
-            duration: 750,
-            easing: 'ease-out-cubic'
-        });
-
-        // 2. Top Scroll Progress Bar
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scroll-progress').style.width = scrolled + '%';
-        });
-
-        // 3. Dynamic Typewriter Effect
-        const roles = [
-            "Corporate Visual Designer",
-            "Presentation Specialist",
-            "Pitchbook & M&A Designer",
-            "Slide Master Architect"
-        ];
-        let roleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typeEl = document.getElementById('typewriter-text');
-
-        function typeEffect() {
-            const currentRole = roles[roleIndex];
-            if (isDeleting) {
-                typeEl.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typeEl.textContent = currentRole.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let speed = isDeleting ? 45 : 85;
-            if (!isDeleting && charIndex === currentRole.length) {
-                speed = 1800;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                speed = 350;
-            }
-            setTimeout(typeEffect, speed);
-        }
-        typeEffect();
-
-        // 4. Interactive Particle Dots Network Canvas
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 140 };
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.5 + 1;
-                this.vx = (Math.random() - 0.5) * 0.7;
-                this.vy = (Math.random() - 0.5) * 0.7;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-                if (mouse.x !== null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < mouse.radius) {
-                        this.x -= dx * 0.015;
-                        this.y -= dy * 0.015;
-                    }
-                }
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(71, 85, 105, 0.35)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.min(75, Math.floor((canvas.width * canvas.height) / 16000));
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-        initParticles();
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                for (let j = i + 1; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 130) {
-                        ctx.strokeStyle = rgba(37, 99, 235, ${0.18 * (1 - dist / 130)});
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-
-        // 5. Real-Time 3D Mouse Tilt on Deck Cards
-        document.querySelectorAll('.tilt-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -6;
-                const rotateY = ((x - centerX) / centerX) * 6;
-                card.style.transform = perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px);
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
-        });
-
-        // 6. Animated Number Counters
-        document.querySelectorAll('.counter').forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const duration = 1400; 
-            const step = target / (duration / 20);
-            let current = 0;
-
-            const updateCounter = () => {
-                current += step;
-                if (current < target) {
-                    counter.innerText = Math.ceil(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCounter();
-        });
-
-        // 7. Render first page of each PDF as a crisp thumbnail
+        // Render first page of each PDF as a crisp thumbnail
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
         function renderThumbnail(pdfUrl, canvasId, loaderId) {
@@ -639,7 +401,7 @@
                     document.getElementById(loaderId).style.display = 'none';
                 });
             }).catch(() => {
-                document.getElementById(loaderId).innerHTML = '<span class="text-slate-700 font-bold">Click to View Slides</span>';
+                document.getElementById(loaderId).innerHTML = '<span class="text-slate-600 font-bold">Click to View Slides</span>';
             });
         }
 
@@ -649,14 +411,14 @@
             renderThumbnail('Template_03.pdf', 'thumb-3', 'loader-3');
         });
 
-        // 8. Interactive Category Filter
+        // Interactive Category Filter
         function filterDecks(category, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('bg-slate-900', 'text-white', 'shadow-md');
-                b.classList.add('bg-slate-200/80', 'text-slate-700', 'border', 'border-slate-300');
+                b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-600/20');
+                b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
             });
-            btn.classList.remove('bg-slate-200/80', 'text-slate-700', 'border', 'border-slate-300');
-            btn.classList.add('bg-slate-900', 'text-white', 'shadow-md');
+            btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            btn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-600/20');
 
             document.querySelectorAll('.deck-card').forEach(card => {
                 if (category === 'all' || card.dataset.category === category) {
@@ -667,7 +429,7 @@
             });
         }
 
-        // 9. Open Fullscreen Viewer
+        // Open Fullscreen Viewer
         function openPreview(file, title) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('pdfFrame').src = file + '#toolbar=0&navpanes=0';
