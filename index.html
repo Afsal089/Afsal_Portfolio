@@ -222,7 +222,7 @@
         <div class="grid md:grid-cols-3 gap-8" id="decks-grid">
             
             <!-- Deck 1: GAPBLUE -->
-            <div data-category="enterprise" data-aos="fade-up" data-aos-delay="100" class="tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
+            <div data-category="enterprise" data-aos="fade-up" data-aos-delay="100" class="deck-card tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
                 <div>
                     <div onclick="openPreview('Template_01.pdf', 'GAPBLUE: Enterprise Transformation Deck (10 Slides)')" class="shine-box relative aspect-video bg-slate-300 overflow-hidden cursor-pointer border-b border-slate-200">
                         <canvas id="thumb-1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></canvas>
@@ -261,7 +261,7 @@
             </div>
 
             <!-- Deck 2: SIGMOID -->
-            <div data-category="data" data-aos="fade-up" data-aos-delay="250" class="tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
+            <div data-category="data" data-aos="fade-up" data-aos-delay="250" class="deck-card tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
                 <div>
                     <div onclick="openPreview('Template_02.pdf', 'SIGMOID: Data & AI Strategy Deck (16 Slides)')" class="shine-box relative aspect-video bg-slate-300 overflow-hidden cursor-pointer border-b border-slate-200">
                         <canvas id="thumb-2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></canvas>
@@ -297,9 +297,8 @@
                         <i class="fas fa-eye mr-2"></i> Inspect Slide Deck
                     </button>
                 </div>
-            </div>
-<!-- Deck 3: KPMG -->
-            <div data-category="consulting" data-aos="fade-up" data-aos-delay="400" class="tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
+                <!-- Deck 3: KPMG -->
+            <div data-category="consulting" data-aos="fade-up" data-aos-delay="400" class="deck-card tilt-card card-surface rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group">
                 <div>
                     <div onclick="openPreview('Template_03.pdf', 'KPMG: Trustworthy Healthcare AI Report (7 Slides)')" class="shine-box relative aspect-video bg-slate-300 overflow-hidden cursor-pointer border-b border-slate-200">
                         <canvas id="thumb-3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></canvas>
@@ -537,7 +536,6 @@
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
-                // Mouse repulsion/interaction
                 if (mouse.x !== null) {
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
@@ -644,7 +642,8 @@
                 document.getElementById(loaderId).innerHTML = '<span class="text-slate-700 font-bold">Click to View Slides</span>';
             });
         }
-window.addEventListener('DOMContentLoaded', () => {
+
+        window.addEventListener('DOMContentLoaded', () => {
             renderThumbnail('Template_01.pdf', 'thumb-1', 'loader-1');
             renderThumbnail('Template_02.pdf', 'thumb-2', 'loader-2');
             renderThumbnail('Template_03.pdf', 'thumb-3', 'loader-3');
@@ -681,4 +680,3 @@ window.addEventListener('DOMContentLoaded', () => {
     </script>
 </body>
 </html>
-        
